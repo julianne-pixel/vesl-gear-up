@@ -92,18 +92,19 @@ const steps = [
       "Before challenges begin, let’s get you geared up: how the season works, how to win, and what to do on Day 1.",
     tip: TIPS[0],
     render: () => {
-      const intentOptions = [
-        ["definitely", "Definitely", "I’m showing up when challenges start."],
-        ["probably", "Probably", "I plan to participate most weeks."],
-        ["not_sure", "Not sure yet", "I’m trying it out / deciding."]
-      ];
 
-      const freqOptions = [
-        ["every_week", "Every week", "I want to compete weekly."],
-        ["most_weeks", "Most weeks", "I’ll miss a week here and there."],
-        ["when_i_can", "When I can", "I’ll participate when time allows."],
-        ["trying", "Just trying it out", "I’m exploring for now."]
-      ];
+      const intentOptions = [
+  ["definitely", "Yes", ""],
+  ["probably", "Kinda", ""],
+  ["not_sure", "Not sure yet", ""]
+];
+
+const freqOptions = [
+  ["every_week", "Every Week", ""],
+  ["most_weeks", "Most Weeks", ""],
+  ["when_i_can", "When I Can", ""],
+  ["trying", "Just Trying it Out", ""]
+];
 
       return `
         <div class="cardInner">
@@ -111,17 +112,13 @@ const steps = [
           <h1 class="h1">${steps[0].headline}</h1>
           <p class="p">${steps[0].body}</p>
 
-          <div class="grid" aria-label="Intent selection">
-            ${intentOptions.map(([value, title, sub]) => tileHTML("intent", value, title, sub, state.intent)).join("")}
-          </div>
 
-          <div class="notice">
-            <strong>Quick vibe check:</strong> how often do you think you’ll participate?
-          </div>
+<div class="notice"><strong>Are you ready to compete this season?</strong></div>
+<div class="grid" aria-label="Intent selection">
+  ${intentOptions.map(([value, title, sub]) => tileHTML("intent", value, title, sub, state.intent)).join("")}
+</div>
 
-          <div class="grid" aria-label="Frequency selection">
-            ${freqOptions.map(([value, title, sub]) => tileHTML("frequency", value, title, sub, state.frequency)).join("")}
-          </div>
+ 
         </div>
       `;
     },
@@ -132,7 +129,7 @@ const steps = [
     key: "video",
     title: "How It Works",
     kicker: "Checkpoint 2",
-    headline: "Watch the quick season briefing.",
+    headline: "Watch this quick vid!",
     body:
       "This explains how weekly challenges work, how points & rewards work, and how teams qualify.",
     tip: TIPS[1],
@@ -156,10 +153,10 @@ const steps = [
             }
           </div>
 
-          <div class="notice">
-            <strong>No quiz.</strong> Just watch enough to understand the flow.
-            When the timer hits 0, you can continue.
-          </div>
+<div class="notice">
+  When the timer hits 0, you can continue.
+</div>
+
 
           <div class="row" role="group" aria-label="Video confirmation">
             <button class="chip ${state.watchedShortVideo ? "selected" : ""}" type="button" id="watchedBtn">
@@ -347,6 +344,16 @@ const steps = [
 // ---- UI helpers ----
 function tileHTML(field, value, title, sub, selectedValue){
   const selected = selectedValue === value ? "selected" : "";
+  const subHtml = sub ? `<div class="tileSub">${sub}</div>` : "";
+  return `
+    <div class="tile ${selected}" role="button" tabindex="0"
+         data-type="single" data-field="${field}" data-value="${value}">
+      <div class="tileTitle">${title}</div>
+      ${subHtml}
+    </div>
+  `;
+}
+  const selected = selectedValue === value ? "selected" : "";
   return `
     <div class="tile ${selected}" role="button" tabindex="0"
          data-type="single" data-field="${field}" data-value="${value}">
@@ -358,25 +365,28 @@ function tileHTML(field, value, title, sub, selectedValue){
 
 function tileHTMLMulti(field, value, title, sub, selectedArray){
   const selected = (selectedArray || []).includes(value) ? "selected" : "";
+  const subHtml = sub ? `<div class="tileSub">${sub}</div>` : "";
   return `
     <div class="tile ${selected}" role="button" tabindex="0"
          data-type="multi" data-field="${field}" data-value="${value}">
       <div class="tileTitle">${title}</div>
-      <div class="tileSub">${sub}</div>
+      ${subHtml}
     </div>
   `;
 }
 
 function tileHTMLMultiLimited(field, value, title, sub, selectedArray, limit){
   const selected = (selectedArray || []).includes(value) ? "selected" : "";
+  const subHtml = sub ? `<div class="tileSub">${sub}</div>` : "";
   return `
     <div class="tile ${selected}" role="button" tabindex="0"
          data-type="multiLimited" data-limit="${limit}" data-field="${field}" data-value="${value}">
       <div class="tileTitle">${title}</div>
-      <div class="tileSub">${sub}</div>
+      ${subHtml}
     </div>
   `;
 }
+
 
 function chipHTML(field, value, label, selectedValue){
   const selected = selectedValue === value ? "selected" : "";
