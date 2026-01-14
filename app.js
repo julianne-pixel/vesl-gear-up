@@ -11,7 +11,7 @@ const CONFIG = {
   subTitle: "Preseason Gear-Up",
   seasonLabel: "Spring 2026",
   accent: "#00fd64", // VESL green
-  shortVideoEmbedUrl: "", // paste an embed URL if you have one
+  shortVideoEmbedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0&modestbranding=1",
   videoMinSeconds: 5,
   supportEmail: "support@thenotwork.org",
   helpUrl: "https://thenotwork.org/help"
@@ -160,9 +160,11 @@ const STEPS = [
           <h1 class="h1">${STEPS[2].headline}</h1>
           <p class="p">${STEPS[2].body}</p>
 
-          <div class="calloutTop">
-            <div class="calloutTitle">Pick all that apply</div>
-            <div class="calloutSub">This just helps you remember the rules.</div>
+            <div class="instructionBanner">
+  <div class="instructionTitle">Pick all that apply</div>
+  <div class="instructionSub">This just helps you remember the rules.</div>
+</div>
+
           </div>
 
           <div class="grid" aria-label="Winning rules selection">
