@@ -94,9 +94,9 @@ const steps = [
     render: () => {
 
       const intentOptions = [
-  ["definitely", "Yes", ""],
-  ["probably", "Kinda", ""],
-  ["not_sure", "Not sure yet", ""]
+  ["definitely", "Let's Go!", ""],
+  ["probably", "Sort of?", ""],
+  ["not_sure", "Not sure yet...", ""]
 ];
 
 const freqOptions = [
