@@ -353,15 +353,7 @@ function tileHTML(field, value, title, sub, selectedValue){
     </div>
   `;
 }
-  const selected = selectedValue === value ? "selected" : "";
-  return `
-    <div class="tile ${selected}" role="button" tabindex="0"
-         data-type="single" data-field="${field}" data-value="${value}">
-      <div class="tileTitle">${title}</div>
-      <div class="tileSub">${sub}</div>
-    </div>
-  `;
-}
+
 
 function tileHTMLMulti(field, value, title, sub, selectedArray){
   const selected = (selectedArray || []).includes(value) ? "selected" : "";
