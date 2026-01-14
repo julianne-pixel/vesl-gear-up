@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VESL STEM — Gear Up</title>
+    <meta name="description" content="Gear up for the VESL STEM season — learn how it works and get Season Ready." />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg"></div>
+
+    <main class="shell" aria-live="polite">
+      <header class="topbar">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">V</div>
+          <div class="brandText">
+            <div class="brandTitle">VESL STEM</div>
+            <div class="brandSub">Preseason Gear-Up</div>
+          </div>
+        </div>
+
+        <div class="topbarRight">
+          <div class="pill" id="statusPill" role="status">Status: Not Ready</div>
+        </div>
+      </header>
+
+      <section class="hud">
+        <div class="progressWrap">
+          <div class="progressMeta">
+            <div class="stepLabel" id="stepLabel">Gear Up: 1 / 6</div>
+            <button class="ghostBtn" id="restartBtn" type="button" title="Restart">
+              Restart
+            </button>
+          </div>
+          <div class="progressBar" aria-hidden="true">
+            <div class="progressFill" id="progressFill"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" id="card" role="region" aria-label="Gear-up step">
+        <!-- injected by JS -->
+      </section>
+
+      <footer class="footer">
+        <div class="footerLeft">
+          <span class="tiny">Tip:</span>
+          <span class="tiny" id="footerTip">This takes ~5 minutes. No grades—just gear-up.</span>
+        </div>
+        <div class="footerRight">
+          <button class="secondaryBtn" id="backBtn" type="button">Back</button>
+          <button class="primaryBtn" id="nextBtn" type="button">Next</button>
+        </div>
+      </footer>
+    </main>
+
+    <dialog class="modal" id="exportModal" aria-labelledby="exportTitle">
+      <div class="modalInner">
+        <div class="modalTitle" id="exportTitle">Gear-Up Complete ✅</div>
+        <p class="modalText">
+          You’re officially <strong>Season Ready</strong>. If your program asks, download your completion file.
+        </p>
+
+        <div class="modalActions">
+          <button class="secondaryBtn" id="closeExportBtn" type="button">Close</button>
+          <button class="primaryBtn" id="downloadBtn" type="button">Download Completion</button>
+        </div>
+
+        <p class="modalNote">
+          Coaches/admins: you can replace the download button with a webhook/API submit later.
+        </p>
+      </div>
+    </dialog>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
