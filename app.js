@@ -150,13 +150,24 @@ const freqOptions = [
       <div class="videoWrap">
         <div class="videoHeader">
           <div class="tiny">Short video</div>
-          <div class="tiny" id="videoTimer">Unlocks in ${CONFIG.videoMinSeconds}s</div>
+          <div class="tiny" id="videoTimer">
+            Unlocks in ${CONFIG.videoMinSeconds}s
+          </div>
         </div>
 
         ${
           hasVideo
-            ? `<iframe class="videoFrame" src="${CONFIG.shortVideoEmbedUrl}" title="Season briefing video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`
-            : `<div style="padding:18px;color:var(--muted);">Add your short video embed URL in <code>app.js</code> → <code>CONFIG.shortVideoEmbedUrl</code>.</div>`
+            ? `<iframe
+                class="videoFrame"
+                src="${CONFIG.shortVideoEmbedUrl}"
+                title="Season briefing video"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen
+              ></iframe>`
+            : `<div style="padding:18px;color:var(--muted);">
+                Add your short video embed URL in
+                <code>app.js</code> → <code>CONFIG.shortVideoEmbedUrl</code>.
+              </div>`
         }
       </div>
 
@@ -165,7 +176,11 @@ const freqOptions = [
       </div>
 
       <div class="row" role="group" aria-label="Video confirmation">
-        <button class="chip ${state.watchedShortVideo ? "selected" : ""}" type="button" id="watchedBtn">
+        <button
+          class="chip ${state.watchedShortVideo ? "selected" : ""}"
+          type="button"
+          id="watchedBtn"
+        >
           ✅ I watched it
         </button>
       </div>
@@ -173,8 +188,6 @@ const freqOptions = [
   `;
 },
 
-      `;
-    },
     onEnter: () => startVideoGateTimer(),
     canProceed: () => Boolean(state.watchedShortVideo) && videoGateUnlocked
   },
