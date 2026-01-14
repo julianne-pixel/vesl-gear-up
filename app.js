@@ -341,7 +341,9 @@ const freqOptions = [
   }
 ];
 
+
 // ---- UI helpers ----
+
 function tileHTML(field, value, title, sub, selectedValue){
   const selected = selectedValue === value ? "selected" : "";
   const subHtml = sub ? `<div class="tileSub">${sub}</div>` : "";
@@ -353,7 +355,6 @@ function tileHTML(field, value, title, sub, selectedValue){
     </div>
   `;
 }
-
 
 function tileHTMLMulti(field, value, title, sub, selectedArray){
   const selected = (selectedArray || []).includes(value) ? "selected" : "";
@@ -372,13 +373,13 @@ function tileHTMLMultiLimited(field, value, title, sub, selectedArray, limit){
   const subHtml = sub ? `<div class="tileSub">${sub}</div>` : "";
   return `
     <div class="tile ${selected}" role="button" tabindex="0"
-         data-type="multiLimited" data-limit="${limit}" data-field="${field}" data-value="${value}">
+         data-type="multiLimited" data-limit="${limit}"
+         data-field="${field}" data-value="${value}">
       <div class="tileTitle">${title}</div>
       ${subHtml}
     </div>
   `;
 }
-
 
 function chipHTML(field, value, label, selectedValue){
   const selected = selectedValue === value ? "selected" : "";
@@ -399,6 +400,8 @@ function chipHTMLMulti(field, value, label, selectedArray){
     </button>
   `;
 }
+
+
 
 // ---- Render cycle ----
 function render(){
