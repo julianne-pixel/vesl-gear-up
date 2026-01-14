@@ -122,7 +122,6 @@ const freqOptions = [
       ${freqOptions.map(([value, title, sub]) => tileHTML("frequency", value, title, sub, state.frequency)).join("")}
     </div>
   </div>
-`;
 
       `;
     },
