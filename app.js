@@ -106,20 +106,24 @@ const freqOptions = [
   ["trying", "Just Trying it Out", ""]
 ];
 
-      return `
-        <div class="cardInner">
-          <div class="kicker">🧩 ${steps[0].kicker}</div>
-          <h1 class="h1">${steps[0].headline}</h1>
-          <p class="p">${steps[0].body}</p>
+  return `
+  <div class="cardInner">
+    <div class="kicker">🧩 ${steps[0].kicker}</div>
+    <h1 class="h1">${steps[0].headline}</h1>
+    <p class="p">${steps[0].body}</p>
 
+    <div class="notice"><strong>Are you ready to compete this season?</strong></div>
+    <div class="grid" aria-label="Intent selection">
+      ${intentOptions.map(([value, title, sub]) => tileHTML("intent", value, title, sub, state.intent)).join("")}
+    </div>
 
-<div class="notice"><strong>Are you ready to compete this season?</strong></div>
-<div class="grid" aria-label="Intent selection">
-  ${intentOptions.map(([value, title, sub]) => tileHTML("intent", value, title, sub, state.intent)).join("")}
-</div>
+    <div class="notice"><strong>Quick vibe check:</strong> how often do you think you’ll participate?</div>
+    <div class="grid" aria-label="Frequency selection">
+      ${freqOptions.map(([value, title, sub]) => tileHTML("frequency", value, title, sub, state.frequency)).join("")}
+    </div>
+  </div>
+`;
 
- 
-        </div>
       `;
     },
     canProceed: () => Boolean(state.intent && state.frequency)
