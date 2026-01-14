@@ -138,7 +138,7 @@ const freqOptions = [
       "This explains how weekly challenges work, how points & rewards work, and how teams qualify.",
     tip: TIPS[1],
 
-    render: () => {
+   render: () => {
   const hasVideo = Boolean(CONFIG.shortVideoEmbedUrl);
 
   return `
@@ -150,37 +150,26 @@ const freqOptions = [
       <div class="videoWrap">
         <div class="videoHeader">
           <div class="tiny">Short video</div>
-          <div class="tiny" id="videoTimer">
-            Unlocks in ${CONFIG.videoMinSeconds}s
-          </div>
+          <div class="tiny" id="videoTimer">Unlocks in ${CONFIG.videoMinSeconds}s</div>
         </div>
 
         ${
           hasVideo
-            ? `<iframe
-                class="videoFrame"
+            ? `<iframe class="videoFrame"
                 src="${CONFIG.shortVideoEmbedUrl}"
                 title="Season briefing video"
                 allow="autoplay; fullscreen; picture-in-picture"
-                allowfullscreen
-              ></iframe>`
+                allowfullscreen></iframe>`
             : `<div style="padding:18px;color:var(--muted);">
-                Add your short video embed URL in
-                <code>app.js</code> → <code>CONFIG.shortVideoEmbedUrl</code>.
+                Add your short video embed URL in <code>CONFIG.shortVideoEmbedUrl</code>.
               </div>`
         }
       </div>
 
-      <div class="notice">
-        When the timer hits 0, you can continue.
-      </div>
+      <div class="notice">When the timer hits 0, you can continue.</div>
 
       <div class="row" role="group" aria-label="Video confirmation">
-        <button
-          class="chip ${state.watchedShortVideo ? "selected" : ""}"
-          type="button"
-          id="watchedBtn"
-        >
+        <button class="chip ${state.watchedShortVideo ? "selected" : ""}" type="button" id="watchedBtn">
           ✅ I watched it
         </button>
       </div>
